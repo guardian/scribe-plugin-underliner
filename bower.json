@@ -1,7 +1,7 @@
 {
   "name": "scribe-plugin-underliner",
   "description": "Underline text in scribe based on matched terms",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "homepage": "https://github.com/guardian/scribe-plugin-underliner",
   "license": "",
   "copyright": "hmgibson23",
