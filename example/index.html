@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>scribe-plugin-underliner</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .scribe {
+    min-height: 60px;
+    border: 1px solid #ececec;
+  }
+</style>
+</head>
+
+<body>
+<h1>scribe-plugin-underliner</h1>
+<div class='scribe'></div>
+<script src='../bower_components/requirejs/require.js'></script>
+<script>
+  require.config({
+    baseUrl: '../',
+    paths: {
+        'scribe': 'bower_components/scribe/scribe',
+        'scribe-plugin-underliner': "build/scribe-plugin-underliner",
+    }
+  });
+  require(['scribe','scribe-plugin-underliner'],
+          function(Scribe, scribePlugin) {
+    window.Scribe = Scribe;
+    window.scribe = new Scribe(document.querySelector('.scribe'));
+    scribe.use(scribePlugin({cssClass: 'underlined'}));
+    scribe.setContent("Got some fun content about Jeremy Corbyn");
+  });
+</script>
+</body>
+</html>
