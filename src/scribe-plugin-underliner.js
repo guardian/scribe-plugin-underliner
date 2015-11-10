@@ -12,7 +12,7 @@ module.exports = function(config) {
       underlinerCommand.queryEnabled = () => { return true; };
 
 
-      underlinerCommand.execute = (terms) => {
+      underlinerCommand.execute = function underlinerCommandExecute (terms) {
           const html = scribe.el.innerHTML;
 
           // filter the already wrapped terms

@@ -55,6 +55,5 @@
   },
   "keywords": [],
   "dependencies": {
-    "lodash.template": "^3.6.2"
   }
 }
