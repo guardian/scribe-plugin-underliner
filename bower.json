@@ -7,7 +7,7 @@
   "copyright": "hmgibson23",
   "main": "scribe-plugin-underliner.js",
   "dependencies": {
-    "scribe": "~2.0.2"
+    "scribe": "~2.0.0"
   },
   "devDependencies": {
     "requirejs": "~2.1.20"
