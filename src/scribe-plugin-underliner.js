@@ -4,7 +4,11 @@ module.exports = function(config) {
 
   return function(scribe) {
       const {cssClass} = config;
-      const template = "<span class='" + cssClass + "'>$&</span>";
+
+      const template = (term) => {
+          return ["<span class='", cssClass, "' data-term='", term, "'>$&</span>"].join('');
+      };
+
       const underlinerCommand = new scribe.api.Command('underliner');
       underlinerCommand.queryEnabled = () => { return true; };
 
@@ -20,7 +24,7 @@ module.exports = function(config) {
 
               // if the term is in the spans, return false
               const isWrapped = !!Array.prototype.filter.call(spans, (span) => {
-                  return span.innerText === term;
+                  return span.innerText.toLowerCase() === term;
               }).length;
 
               return !isWrapped;
@@ -28,7 +32,7 @@ module.exports = function(config) {
 
           const replaced = notWrapped.reduce((current, term) => {
               const regex = new RegExp(term, 'gi');
-              return html.replace(regex, template);
+              return html.replace(regex, template(term));
           }, html);
 
           scribe.setHTML(replaced);
