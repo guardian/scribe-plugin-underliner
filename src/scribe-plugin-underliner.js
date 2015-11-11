@@ -8,7 +8,6 @@ module.exports = function(config) {
       const underlinerCommand = new scribe.api.Command('underliner');
       underlinerCommand.queryEnabled = () => { return true; };
 
-
       underlinerCommand.execute = function underlinerCommandExecute (terms) {
           const html = scribe.el.innerHTML;
 
@@ -28,7 +27,7 @@ module.exports = function(config) {
 
           const replaced = notWrapped.reduce((current, term) => {
               const regex = new RegExp(term, 'gi');
-              return html.replace(regex, template);
+              return current.replace(regex, template);
           }, html);
 
           scribe.setHTML(replaced);
