@@ -32,7 +32,7 @@ module.exports = function (config) {
 
             var replaced = notWrapped.reduce(function (current, term) {
                 var regex = new RegExp(term, "gi");
-                return html.replace(regex, template);
+                return current.replace(regex, template);
             }, html);
 
             scribe.setHTML(replaced);
