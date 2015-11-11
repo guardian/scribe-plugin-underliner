@@ -3,11 +3,8 @@ module.exports = function(config) {
 
 
   return function(scribe) {
-      const template = (cssClass, term) => {
-          return ['<span class="', cssClass, '">', term, '</span>'].join('');
-      };
-
       const {cssClass} = config;
+      const template = "<span class='" + cssClass + "'>$&</span>";
       const underlinerCommand = new scribe.api.Command('underliner');
       underlinerCommand.queryEnabled = () => { return true; };
 
@@ -30,7 +27,8 @@ module.exports = function(config) {
           });
 
           const replaced = notWrapped.reduce((current, term) => {
-              return html.replace(term, template(cssClass, term));
+              const regex = new RegExp(term, 'gi');
+              return html.replace(regex, template);
           }, html);
 
           scribe.setHTML(replaced);
