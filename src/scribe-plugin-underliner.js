@@ -30,7 +30,7 @@ module.exports = function(config) {
               return current.replace(regex, template);
           }, html);
 
-          scribe.setHTML(replaced);
+          scribe.setHTML(replaced, true);
       };
 
       scribe.commands['underliner'] = underlinerCommand;
